@@ -1,1 +1,7 @@
-<p-menubar [model]="items"></p-menubar>
+<p-menubar *ngIf="isDesktop" [model]="items"></p-menubar>
+
+<p-menu *ngIf="!isDesktop" #menuPopup [model]="items" [popup]="true"></p-menu>
+
+<button *ngIf="!isDesktop" type="button" pButton class="colors-button" (click)="menuPopup.toggle($event)">
+  <mat-icon>menu</mat-icon>
+</button>

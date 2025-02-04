@@ -21,9 +21,9 @@ import {MatDatepickerModule} from '@angular/material/datepicker';
 import { FileUploadModule } from 'primeng/fileupload';
 import { NavbarComponent } from './base/navbar/navbar.component';
 import { MenubarModule } from 'primeng/menubar';
-import { ImageComponent } from './modules/task/image.component';
-import { ImageAddComponent } from './modules/task/image-create/image-add.component';
-import { ImageDeleteComponent } from './modules/task/image-delete/image-delete.component';
+import { ImageComponent } from './modules/task/planet.component';
+import { PlanetAddComponent } from './modules/task/planet-create/planet-add.component';
+import { PlanetDeleteComponent } from './modules/task/planet-delete/planet-delete.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { DropdownModule } from 'primeng/dropdown';
 import {MultiSelectModule} from 'primeng/multiselect';
@@ -31,16 +31,25 @@ import { MessagesModule } from 'primeng/messages';
 import { MessageService } from 'primeng/api';
 import { ProgressSpinnerModule } from 'primeng/progressspinner';
 import { ComponentSpinnerComponent } from './shared/component-spinner/component-spinner.component';
+import { PaginatorModule } from 'primeng/paginator';
+import { DialogModule } from 'primeng/dialog';
+import { RemoveSecurityImgPipe } from './pipe/remove-security-img.pipe';
+import { SectionNotFoundComponent } from './shared/section-not-found/section-not-found.component';
+import { CardWelcomeComponent } from './base/navbar/card-welcome/card-welcome.component';
+import { MenuModule } from 'primeng/menu';
 
 @NgModule({
   declarations: [
     AppComponent,
     ImageComponent,
-    ImageAddComponent,
-    ImageDeleteComponent,
+    PlanetAddComponent,
+    PlanetDeleteComponent,
     FechaFormatAMDPipe,
     NavbarComponent,
     ComponentSpinnerComponent,
+    RemoveSecurityImgPipe,
+    SectionNotFoundComponent,
+    CardWelcomeComponent
   ],
   imports: [
     BrowserModule,
@@ -68,7 +77,10 @@ import { ComponentSpinnerComponent } from './shared/component-spinner/component-
     FileUploadModule,
     MessagesModule,
     ToastModule,
-    ProgressSpinnerModule
+    ProgressSpinnerModule,
+    PaginatorModule,
+    DialogModule,
+    MenuModule
   ],
   providers: [
   provideAnimations(),

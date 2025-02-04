@@ -1,0 +1,85 @@
+<div class="m-2 mt-4">
+  <form [formGroup]="formPlanet" novalidate autocomplete="off" class="p-card-body">
+    <div class="pb-2">
+      <div class="flex items-center">
+        <div class="inline-block px-2" id="step1">
+          <strong class="flex pl-1">Nombre del planeta</strong>
+          <input formControlName="planetName" class="p-inputtext mt-1" />
+        </div>
+        <div class="flex ml-2 mt-3" id="step2">
+          <p-button styleClass="p-button-success p-button-sm p-button-rounded p-button-text m-1" pTooltip="Buscar"
+            [disabled]="formPlanet.invalid" matTooltipPosition="above"
+            (click)="formPlanet.invalid ? null : listPlanet()">
+            <mat-icon>search</mat-icon>
+          </p-button>
+          <p-button styleClass="p-button-danger p-button-sm p-button-rounded p-button-text m-1" pTooltip="Limpiar"
+            matTooltipPosition="above" (click)="cleanFilterPlanet()">
+            <mat-icon>cleaning_services</mat-icon>
+          </p-button>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>
+
+<div class="flex align-items-center justify-content-between">
+  <h1>Planetas</h1>
+  <mat-icon class="mt-2 ml-4 m-1" title="Ordenar por Nombre" id="step3"
+    (click)="toggleSortOrder()">sort_by_alpha</mat-icon>
+  <p-button label="Nuevo" class="ml-auto" id="step4" styleClass="p-button-rounded p-button-sm" pTooltip="Nuevo planeta"
+    matTooltipPosition="above" (click)="savePlanetDialog()">
+    <mat-icon>add</mat-icon>
+  </p-button>
+</div>
+
+<div class="container pt-1" id="step5">
+  <div *ngIf="displayedPlanets?.length === 0" class="no-planets-message flex align-items-center justify-content-center">
+    <mat-icon class="planet-icon-no-result" style="font-size: 40px;">public</mat-icon>
+    <p class="ml-2" style="font-size: 18px; color: #555;">
+      <strong>Lo sentimos, no encontramos planetas</strong><br>
+      ¡Prueba buscando otro nombre de planeta o intenta con otro término!
+    </p>
+  </div>
+  <div *ngIf="displayedPlanets?.length > 0" class="grid">
+    <div *ngFor="let item of displayedPlanets" class="col-12 md:col-3 lg:col-3">
+      <p-card class="planet-card">
+        <ng-template pTemplate="header">
+          <div class="card-header">
+            <mat-icon *ngIf="item.planetFavorite == 1" class="favorite-icon" title="Favorito">rocket_launch</mat-icon>
+            <h2 class="pl-2">{{ item.planetName }}</h2>
+          </div>
+        </ng-template>
+        <ng-template pTemplate="content">
+          <p class="description"><strong>Descripción:</strong> {{ item.planetDescription }}</p>
+          <div class="icon-container">
+            <mat-icon class="planet-icon-detail" title="Ver detalles"
+              (click)="showPlanetDetails(item)">search</mat-icon>
+            <mat-icon *ngIf="item.planetFavorite == 0" class="planet-icon-favorite" title="Agregar a favorito"
+              (click)="updateFavorites(item)">star</mat-icon>
+            <mat-icon *ngIf="item.planetFavorite == 1" class="planet-icon-favorite" title="Quitar de favorito"
+              (click)="updateFavorites(item)">block</mat-icon>
+            <mat-icon class="planet-icon-delete" title="Eliminar" (click)="deletePlanetDialog(item)">delete</mat-icon>
+          </div>
+        </ng-template>
+      </p-card>
+    </div>
+  </div>
+</div>
+<div class="flex justify-content-center mt-4">
+  <p-paginator id="step9" [first]="first" [rows]="rows" [totalRecords]="totalRecords"
+    [rowsPerPageOptions]="[5, 10, 15, 20]" (onPageChange)="onPageChange($event)">
+  </p-paginator>
+</div>
+
+<p-dialog header="Detalles del Planeta" [(visible)]="displayPlanetDialog" [modal]="true" [closable]="true"
+  [style]="{ width: '33rem' }" [draggable]="false">
+  <div *ngIf="selectedPlanet">
+    <img [src]="selectedPlanet.imageUrl | removeSecurityImg" alt="Imagen del planeta" class="w-full custom-image" />
+    <p><strong>Nombre:</strong> {{ selectedPlanet.planetName }}</p>
+    <p><strong>Masa:</strong> {{ selectedPlanet.planetMass }}</p>
+    <p class="w-full"><strong>Descripción:</strong> {{ selectedPlanet.planetDescription }}</p>
+    <p><strong>Favorito:</strong> {{ selectedPlanet.planetFavorite == 1? "Si" : "No" }}</p>
+  </div>
+</p-dialog>
+
+<app-component-spinner *ngIf="isProgressSpinner"></app-component-spinner>

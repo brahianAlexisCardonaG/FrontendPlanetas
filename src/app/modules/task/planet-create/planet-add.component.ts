@@ -2,52 +2,57 @@ import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef } from '@angular/material/dialog';
 import { ToastrService } from 'ngx-toastr';
-import { ImageService } from 'src/app/core/services/image-service.service';
+import { PlanetService } from 'src/app/core/services/planet-service.service';
 
 @Component({
-  selector: 'app-image-add',
-  templateUrl: './image-add.component.html',
-  styleUrls: ['./image-add.component.scss']
+  selector: 'app-planet-add',
+  templateUrl: './planet-add.component.html',
+  styleUrls: ['./planet-add.component.scss']
 })
 
-export class ImageAddComponent implements OnInit {
-  formAddImage!: FormGroup;
+export class PlanetAddComponent implements OnInit {
+  formAddPlanet!: FormGroup;
   mensajeError = null;
   isProgressSpinner: boolean = false;
 
   constructor(
     private formBuilder: FormBuilder,
-    public dialogRef: MatDialogRef<ImageAddComponent>,
-    private imageService: ImageService,
+    public dialogRef: MatDialogRef<PlanetAddComponent>,
+    private planetService: PlanetService,
     private toasterService: ToastrService,
     private cdr: ChangeDetectorRef
   ) {
   }
 
   ngOnInit(): void {
-    this.formAddImage = this.formBuilder.group({
+    this.formAddPlanet = this.formBuilder.group({
       image: [null, [Validators.required]],
-      name: ['', [Validators.required, Validators.pattern(/^[A-Za-z0-9 :]*$/), Validators.maxLength(20)]],
+      planetName: ['', [Validators.required, Validators.pattern(/^[A-Za-z0-9 :]*$/), Validators.maxLength(20)]],
+      planetMass: ['', [Validators.required, Validators.pattern(/^[A-Za-z0-9 :\.×\^]*$/), Validators.maxLength(20)]],
+      planetDescription: ['', [Validators.required, Validators.pattern(/^[A-Za-z0-9áéíóúÁÉÍÓÚñÑ\s,\.\(\)\-\'\"¿?¡!]*$/), Validators.maxLength(1000)]],
     });
   }
 
   get form() {
-    return this.formAddImage.controls;
+    return this.formAddPlanet.controls;
   }
 
   onFormSubmit() {
     if (navigator.onLine) {
       this.mensajeError = null;
       const formData = new FormData();
-      formData.append('personName', this.formAddImage.get('name')?.value);
-      formData.append('image', this.formAddImage.get('image')?.value);
+      formData.append('planetName', this.formAddPlanet.get('planetName')?.value);
+      formData.append('planetMass', this.formAddPlanet.get('planetMass')?.value);
+      formData.append('planetDescription', this.formAddPlanet.get('planetDescription')?.value);
+      formData.append('planetFavorite', JSON.stringify(0));
+      formData.append('image', this.formAddPlanet.get('image')?.value);
 
       this.isProgressSpinner = true;
-      this.imageService.save(formData).subscribe({
+      this.planetService.save(formData).subscribe({
         next: (data) => {
           this.isProgressSpinner = false;
           this.dialogRef.close(data);
-          this.toasterService.success('Imagen guardada exitosamente');
+          this.toasterService.success('Planeta guardado exitosamente');
         },
         error: (error) => {
           this.isProgressSpinner = false;
@@ -90,7 +95,7 @@ export class ImageAddComponent implements OnInit {
                 const convertedFile = new File([blob], `${file.name.split('.')[0]}.png`, {
                   type: 'image/png',
                 });
-                this.formAddImage.get('image')?.setValue(convertedFile);
+                this.formAddPlanet.get('image')?.setValue(convertedFile);
                 this.cdr.detectChanges();
               }
             }, 'image/png');

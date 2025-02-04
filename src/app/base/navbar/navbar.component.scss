@@ -1,0 +1,19 @@
+@media screen and (max-width: 1024px) {
+  p-menubar {
+    display: none;
+  }
+
+  p-menu {
+    width: 100%;
+  }
+
+  button[pi] {
+    font-size: 1.5rem;
+  }
+
+  .colors-button {
+    color: #495057 !important;
+    background:#f8f9fa !important;
+    border: #495057 !important;;
+  }
+}

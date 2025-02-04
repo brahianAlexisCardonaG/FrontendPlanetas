@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
-import { ImageAddComponent } from 'src/app/modules/task/image-create/image-add.component';
-import { ImageDeleteComponent } from 'src/app/modules/task/image-delete/image-delete.component';
+import { PlanetAddComponent } from 'src/app/modules/task/planet-create/planet-add.component';
+import { PlanetDeleteComponent } from 'src/app/modules/task/planet-delete/planet-delete.component';
 @Injectable({
   providedIn: 'root'
 })
@@ -16,16 +16,16 @@ export class DialogService {
     return Object.assign({}, this.defaultOptions, newInformation);
   }
 
-  saveImageDialog() {
-    let dialogRef: MatDialogRef<ImageAddComponent>;
-    dialogRef = this.matDialog.open(ImageAddComponent, this.defaultOptions);
+  savePlanetDialog() {
+    let dialogRef: MatDialogRef<PlanetAddComponent>;
+    dialogRef = this.matDialog.open(PlanetAddComponent, this.defaultOptions);
     return dialogRef.afterClosed();
   }
 
-  deleteImageDialog(data: any) {
-    let dialogRef: MatDialogRef<ImageDeleteComponent>;
+  deletePlanetDialog(data: any) {
+    let dialogRef: MatDialogRef<PlanetDeleteComponent>;
     dialogRef = this.matDialog.open(
-      ImageDeleteComponent,
+      PlanetDeleteComponent,
       this.assignOptions({
         data: { data }
       })

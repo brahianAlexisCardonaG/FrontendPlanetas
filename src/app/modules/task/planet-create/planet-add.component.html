@@ -1,0 +1,92 @@
+<ng-container *ngIf="formAddPlanet">
+  <p-card role="region" [style]="{ width: '600px' }">
+    <form [formGroup]="formAddPlanet" novalidate autocomplete="off" class="p-card-body">
+      <div>
+        <h2 class="p-dialog-title">Nuevo Planeta</h2>
+      </div>
+      <div class="p-dialog-content p-fluid p-mb-3">
+        <div class="p-field m-1">
+          <label for="planetName">Nombre Planeta</label>
+          <input id="planetName" type="text" formControlName="planetName" class="p-inputtext">
+          <div class="p-invalid span-no-margin">
+            <ng-container *ngIf="formAddPlanet.controls['planetName'].invalid && formAddPlanet.controls['planetName'].touched">
+              <span *ngIf="formAddPlanet.controls['planetName'].errors?.['required']"
+                class="text-red-500 scalein animation-duration-500 text-sm relative flex z-0">
+                Este campo es requerido
+              </span>
+              <span *ngIf="formAddPlanet.controls['planetName'].errors?.['pattern']"
+                class="text-red-500 scalein animation-duration-500 text-sm relative flex z-0">
+                Solo se permiten letras, números, espacios y los dos puntos (:)
+              </span>
+              <span *ngIf="formAddPlanet.controls['planetName'].errors?.['maxlength']"
+                class="text-red-500 scalein animation-duration-500 text-sm relative flex z-0">
+                No se permiten mas de 20 carateres
+              </span>
+            </ng-container>
+          </div>
+        </div>
+        <div class="p-field m-1">
+          <label for="planetMass">Masa Planeta</label>
+          <input id="planetMass" type="text" formControlName="planetMass" class="p-inputtext">
+          <div class="p-invalid span-no-margin">
+            <ng-container *ngIf="formAddPlanet.controls['planetMass'].invalid && formAddPlanet.controls['planetMass'].touched">
+              <span *ngIf="formAddPlanet.controls['planetMass'].errors?.['required']"
+                class="text-red-500 scalein animation-duration-500 text-sm relative flex z-0">
+                Este campo es requerido
+              </span>
+              <span *ngIf="formAddPlanet.controls['planetMass'].errors?.['pattern']"
+                class="text-red-500 scalein animation-duration-500 text-sm relative flex z-0">
+                Solo se permiten letras, números, espacios
+              </span>
+              <span *ngIf="formAddPlanet.controls['planetMass'].errors?.['maxlength']"
+                class="text-red-500 scalein animation-duration-500 text-sm relative flex z-0">
+                No se permiten mas de 20 carateres
+              </span>
+            </ng-container>
+          </div>
+        </div>
+        <div class="p-field m-1">
+          <label for="planetDescription">Descripción Planeta</label>
+          <textarea rows="5" cols="30" pTextarea formControlName="planetDescription" class="p-inputtext"></textarea>
+          <div class="p-invalid span-no-margin">
+            <ng-container *ngIf="formAddPlanet.controls['planetDescription'].invalid && formAddPlanet.controls['planetDescription'].touched">
+              <span *ngIf="formAddPlanet.controls['planetDescription'].errors?.['required']"
+                class="text-red-500 scalein animation-duration-500 text-sm relative flex z-0">
+                Este campo es requerido
+              </span>
+              <span *ngIf="formAddPlanet.controls['planetDescription'].errors?.['pattern']"
+                class="text-red-500 scalein animation-duration-500 text-sm relative flex z-0">
+                Solo se permiten letras, números, espacios y signos de puntuación
+              </span>
+              <span *ngIf="formAddPlanet.controls['planetDescription'].errors?.['maxlength']"
+                class="text-red-500 scalein animation-duration-500 text-sm relative flex z-0">
+                No se permiten mas de 1000 carateres
+              </span>
+            </ng-container>
+          </div>
+        </div>
+        <div class="p-field m-2">
+          <div class="p-1 pb-2">
+            <label for="image">Imagen</label>
+          </div>
+
+          <p-fileUpload class="pt-4" #fu mode="basic" chooseLabel="Seleccionar Imagen" chooseIcon="pi pi-upload" name="demo[]"
+            url="https://www.primefaces.org/cdn/api/upload.php" accept="image/jpeg"
+            (onSelect)="onFileSelect($event)"></p-fileUpload>
+        </div>
+      </div>
+      <div class="mt-2 flex flex-row-reverse">
+        <button type="button" pButton (click)="dialogRef.close()"
+          class="p-button-sm p-button-secondary p-button-rounded m-1">
+          Cancelar
+        </button>
+        <button (click)="onFormSubmit()" [disabled]="!formAddPlanet.valid" pButton
+          class="p-button-sm p-button-success p-button-rounded m-1">
+          Crear
+        </button>
+      </div>
+    </form>
+  </p-card>
+</ng-container>
+
+<app-component-spinner *ngIf="isProgressSpinner"></app-component-spinner>

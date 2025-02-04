@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ImageComponent } from './image.component';
+import { ImageComponent } from './planet.component';
 
 describe('TaskComponent', () => {
   let component: ImageComponent;
