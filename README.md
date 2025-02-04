@@ -25,3 +25,7 @@ Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To u
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+
+## Pasos para ejecutar la aplicacion en ambiente dev o local
+1. instalar las dependencias con el comando npm run install
+2. hacer un nmp run start para que el aplicativo corra en el puerto localhost:4200
