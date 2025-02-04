@@ -17,6 +17,9 @@ se cambien las variables de esta manera
 3. si desea ejecutar el backend debe tener en cuenta que tambien debe instalar
 las dependecias con un npm install
 4. para ejecutar el backend lo hacemos con el comando node app.js
+5. para que puedas utilizar el backend en el puerto 3000 localhost debes cambiar la
+   URL_BASE en el archivo planet.constant.ts que se encuentra en src/core/constants/planet.constant.ts
+   cambias la URL_BASE por http//localhost:3000
 
 Con estos pasos puedes ejecuatar la aplicacion de planetas en ambiente dev
 
