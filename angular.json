@@ -29,7 +29,7 @@
               "src/favicon.ico",
               "src/assets",
               {
-                "glob": "_redirects",
+                "glob": "static.json",
                 "input": "src/assets",
                 "output": "./"
               }
