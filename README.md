@@ -1,6 +1,6 @@
 # planets
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.1.0.
+This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.3.11.
 
 ## Pasos para ejecutar la aplicacion en ambiente dev o local
 antes de seguir los pasos es importante que en el archivo package.json,
