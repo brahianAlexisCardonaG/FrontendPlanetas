@@ -8,8 +8,8 @@ describe('ComponentSpinnerComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [ComponentSpinnerComponent]
-    });
+    imports: [ComponentSpinnerComponent]
+});
     fixture = TestBed.createComponent(ComponentSpinnerComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();

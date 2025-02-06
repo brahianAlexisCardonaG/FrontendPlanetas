@@ -1,11 +1,17 @@
 import { Component, HostListener, OnInit, ViewChild } from '@angular/core';
 import { MenuItem } from 'primeng/api';
-import { Menu } from 'primeng/menu';
+import { Menu, MenuModule } from 'primeng/menu';
+import { MatIcon } from '@angular/material/icon';
+import { ButtonDirective } from 'primeng/button';
+import { MenubarModule } from 'primeng/menubar';
+
 
 @Component({
-  selector: 'app-navbar',
-  templateUrl: './navbar.component.html',
-  styleUrls: ['./navbar.component.scss']
+    selector: 'app-navbar',
+    templateUrl: './navbar.component.html',
+    styleUrls: ['./navbar.component.scss'],
+    standalone: true,
+    imports: [MenubarModule, MenuModule, ButtonDirective, MatIcon]
 })
 export class NavbarComponent implements OnInit {
   items!: MenuItem[];

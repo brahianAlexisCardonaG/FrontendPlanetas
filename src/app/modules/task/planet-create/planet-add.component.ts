@@ -1,13 +1,20 @@
 import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatDialogRef } from '@angular/material/dialog';
 import { ToastrService } from 'ngx-toastr';
 import { PlanetService } from 'src/app/core/services/planet-service.service';
+import { ComponentSpinnerComponent } from '../../../shared/component-spinner/component-spinner.component';
+import { ButtonDirective } from 'primeng/button';
+import { FileUploadModule } from 'primeng/fileupload';
+import { CardModule } from 'primeng/card';
+
 
 @Component({
-  selector: 'app-planet-add',
-  templateUrl: './planet-add.component.html',
-  styleUrls: ['./planet-add.component.scss']
+    selector: 'app-planet-add',
+    templateUrl: './planet-add.component.html',
+    styleUrls: ['./planet-add.component.scss'],
+    standalone: true,
+    imports: [CardModule, FormsModule, ReactiveFormsModule, FileUploadModule, ButtonDirective, ComponentSpinnerComponent]
 })
 
 export class PlanetAddComponent implements OnInit {

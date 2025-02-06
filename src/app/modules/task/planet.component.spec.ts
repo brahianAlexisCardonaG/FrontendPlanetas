@@ -1,16 +1,16 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ImageComponent } from './planet.component';
+import { PlanetComponent } from './planet.component';
 
 describe('TaskComponent', () => {
-  let component: ImageComponent;
-  let fixture: ComponentFixture<ImageComponent>;
+  let component: PlanetComponent;
+  let fixture: ComponentFixture<PlanetComponent>;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [ImageComponent]
-    });
-    fixture = TestBed.createComponent(ImageComponent);
+    imports: [PlanetComponent]
+});
+    fixture = TestBed.createComponent(PlanetComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

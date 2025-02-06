@@ -1,78 +1,89 @@
-<ng-container *ngIf="formAddPlanet">
+@if (formAddPlanet) {
   <div class="form-container">
     <p-card role="region">
       <form [formGroup]="formAddPlanet" novalidate autocomplete="off">
         <div>
           <h2 class="p-dialog-title">Nuevo Planeta</h2>
         </div>
-
         <div class="p-fluid grid">
           <div class="p-field col-12">
             <label for="planetName">Nombre Planeta</label>
             <input id="planetName" type="text" formControlName="planetName" class="p-inputtext w-100">
             <div class="p-invalid span-no-margin">
-              <ng-container
-                *ngIf="formAddPlanet.controls['planetName'].invalid && formAddPlanet.controls['planetName'].touched">
-                <span *ngIf="formAddPlanet.controls['planetName'].errors?.['required']"
-                  class="text-red-500 scalein animation-duration-500 text-sm relative flex z-0">
-                  Este campo es requerido
-                </span>
-                <span *ngIf="formAddPlanet.controls['planetName'].errors?.['pattern']"
-                  class="text-red-500 scalein animation-duration-500 text-sm relative flex z-0">
-                  Solo se permiten letras, números, espacios y los dos puntos (:)
-                </span>
-                <span *ngIf="formAddPlanet.controls['planetName'].errors?.['maxlength']"
-                  class="text-red-500 scalein animation-duration-500 text-sm relative flex z-0">
-                  No se permiten mas de 20 carateres
-                </span>
-              </ng-container>
+              @if (formAddPlanet.controls['planetName'].invalid && formAddPlanet.controls['planetName'].touched) {
+                @if (formAddPlanet.controls['planetName'].errors?.['required']) {
+                  <span
+                    class="text-red-500 scalein animation-duration-500 text-sm relative flex z-0">
+                    Este campo es requerido
+                  </span>
+                }
+                @if (formAddPlanet.controls['planetName'].errors?.['pattern']) {
+                  <span
+                    class="text-red-500 scalein animation-duration-500 text-sm relative flex z-0">
+                    Solo se permiten letras, números, espacios y los dos puntos (:)
+                  </span>
+                }
+                @if (formAddPlanet.controls['planetName'].errors?.['maxlength']) {
+                  <span
+                    class="text-red-500 scalein animation-duration-500 text-sm relative flex z-0">
+                    No se permiten mas de 20 carateres
+                  </span>
+                }
+              }
             </div>
           </div>
-
           <div class="p-field col-12">
             <label for="planetMass">Masa Planeta</label>
             <input id="planetMass" type="text" formControlName="planetMass" class="p-inputtext w-100">
             <div class="p-invalid span-no-margin">
-              <ng-container
-                *ngIf="formAddPlanet.controls['planetMass'].invalid && formAddPlanet.controls['planetMass'].touched">
-                <span *ngIf="formAddPlanet.controls['planetMass'].errors?.['required']"
-                  class="text-red-500 scalein animation-duration-500 text-sm relative flex z-0">
-                  Este campo es requerido
-                </span>
-                <span *ngIf="formAddPlanet.controls['planetMass'].errors?.['pattern']"
-                  class="text-red-500 scalein animation-duration-500 text-sm relative flex z-0">
-                  Solo se permiten letras, números, espacios
-                </span>
-                <span *ngIf="formAddPlanet.controls['planetMass'].errors?.['maxlength']"
-                  class="text-red-500 scalein animation-duration-500 text-sm relative flex z-0">
-                  No se permiten mas de 20 carateres
-                </span>
-              </ng-container>
+              @if (formAddPlanet.controls['planetMass'].invalid && formAddPlanet.controls['planetMass'].touched) {
+                @if (formAddPlanet.controls['planetMass'].errors?.['required']) {
+                  <span
+                    class="text-red-500 scalein animation-duration-500 text-sm relative flex z-0">
+                    Este campo es requerido
+                  </span>
+                }
+                @if (formAddPlanet.controls['planetMass'].errors?.['pattern']) {
+                  <span
+                    class="text-red-500 scalein animation-duration-500 text-sm relative flex z-0">
+                    Solo se permiten letras, números, espacios
+                  </span>
+                }
+                @if (formAddPlanet.controls['planetMass'].errors?.['maxlength']) {
+                  <span
+                    class="text-red-500 scalein animation-duration-500 text-sm relative flex z-0">
+                    No se permiten mas de 20 carateres
+                  </span>
+                }
+              }
             </div>
           </div>
-
           <div class="p-field col-12">
             <label for="planetDescription">Descripción Planeta</label>
             <textarea rows="5" formControlName="planetDescription" class="p-inputtext w-100"></textarea>
             <div class="p-invalid span-no-margin">
-              <ng-container
-                *ngIf="formAddPlanet.controls['planetDescription'].invalid && formAddPlanet.controls['planetDescription'].touched">
-                <span *ngIf="formAddPlanet.controls['planetDescription'].errors?.['required']"
-                  class="text-red-500 scalein animation-duration-500 text-sm relative flex z-0">
-                  Este campo es requerido
-                </span>
-                <span *ngIf="formAddPlanet.controls['planetDescription'].errors?.['pattern']"
-                  class="text-red-500 scalein animation-duration-500 text-sm relative flex z-0">
-                  Solo se permiten letras, números, espacios y signos de puntuación
-                </span>
-                <span *ngIf="formAddPlanet.controls['planetDescription'].errors?.['maxlength']"
-                  class="text-red-500 scalein animation-duration-500 text-sm relative flex z-0">
-                  No se permiten mas de 1000 carateres
-                </span>
-              </ng-container>
+              @if (formAddPlanet.controls['planetDescription'].invalid && formAddPlanet.controls['planetDescription'].touched) {
+                @if (formAddPlanet.controls['planetDescription'].errors?.['required']) {
+                  <span
+                    class="text-red-500 scalein animation-duration-500 text-sm relative flex z-0">
+                    Este campo es requerido
+                  </span>
+                }
+                @if (formAddPlanet.controls['planetDescription'].errors?.['pattern']) {
+                  <span
+                    class="text-red-500 scalein animation-duration-500 text-sm relative flex z-0">
+                    Solo se permiten letras, números, espacios y signos de puntuación
+                  </span>
+                }
+                @if (formAddPlanet.controls['planetDescription'].errors?.['maxlength']) {
+                  <span
+                    class="text-red-500 scalein animation-duration-500 text-sm relative flex z-0">
+                    No se permiten mas de 1000 carateres
+                  </span>
+                }
+              }
             </div>
           </div>
-
           <div class="p-field col-12">
             <label for="image" class="pb-2">Imagen</label>
             <p-fileUpload mode="basic" chooseLabel="Seleccionar Imagen" chooseIcon="pi pi-upload" name="demo[]"
@@ -80,7 +91,6 @@
             </p-fileUpload>
           </div>
         </div>
-
         <!-- Botones -->
         <div class="mt-2 flex flex-row-reverse">
           <button type="button" pButton (click)="dialogRef.close()"
@@ -95,6 +105,8 @@
       </form>
     </p-card>
   </div>
-</ng-container>
+}
 
-<app-component-spinner *ngIf="isProgressSpinner"></app-component-spinner>
+@if (isProgressSpinner) {
+  <app-component-spinner></app-component-spinner>
+}

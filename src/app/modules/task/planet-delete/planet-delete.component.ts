@@ -1,12 +1,17 @@
 import { Component, Inject, OnInit } from '@angular/core';
-import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
+import { MAT_DIALOG_DATA, MatDialogRef, MatDialogTitle } from '@angular/material/dialog';
 import { ToastrService } from 'ngx-toastr';
 import { PlanetService } from 'src/app/core/services/planet-service.service';
+import { ComponentSpinnerComponent } from '../../../shared/component-spinner/component-spinner.component';
+
+import { Button } from 'primeng/button';
 
 @Component({
-  selector: 'app-planet-delete',
-  templateUrl: './planet-delete.component.html',
-  styleUrls: ['./planet-delete.component.scss']
+    selector: 'app-planet-delete',
+    templateUrl: './planet-delete.component.html',
+    styleUrls: ['./planet-delete.component.scss'],
+    standalone: true,
+    imports: [MatDialogTitle, Button, ComponentSpinnerComponent]
 })
 export class PlanetDeleteComponent implements OnInit {
 

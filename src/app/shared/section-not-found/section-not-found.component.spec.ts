@@ -8,8 +8,8 @@ describe('SectionNotFoundComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [SectionNotFoundComponent]
-    });
+    imports: [SectionNotFoundComponent]
+});
     fixture = TestBed.createComponent(SectionNotFoundComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();

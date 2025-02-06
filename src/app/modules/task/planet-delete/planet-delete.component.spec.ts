@@ -8,8 +8,8 @@ describe('TaskDeleteComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [PlanetDeleteComponent]
-    });
+    imports: [PlanetDeleteComponent]
+});
     fixture = TestBed.createComponent(PlanetDeleteComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();

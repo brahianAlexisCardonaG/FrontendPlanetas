@@ -1,9 +1,10 @@
 import { Component } from '@angular/core';
 
 @Component({
-  selector: 'app-section-not-found',
-  templateUrl: './section-not-found.component.html',
-  styleUrls: ['./section-not-found.component.scss']
+    selector: 'app-section-not-found',
+    templateUrl: './section-not-found.component.html',
+    styleUrls: ['./section-not-found.component.scss'],
+    standalone: true
 })
 export class SectionNotFoundComponent {
 

@@ -1,7 +1,8 @@
 import { Pipe, PipeTransform } from '@angular/core';
 
 @Pipe({
-  name: 'removeSecurityImg'
+    name: 'removeSecurityImg',
+    standalone: true
 })
 export class RemoveSecurityImgPipe implements PipeTransform {
 

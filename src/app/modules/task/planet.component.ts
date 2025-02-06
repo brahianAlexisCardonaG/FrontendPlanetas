@@ -1,18 +1,27 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import introJs from 'intro.js';
+import { FormBuilder, FormGroup, Validators, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
 import { DialogService } from 'src/app/core/services/dialog.service';
 import { PlanetService } from 'src/app/core/services/planet-service.service';
 import { RemoveSecurityImgPipe } from 'src/app/pipe/remove-security-img.pipe';
+import { ComponentSpinnerComponent } from '../../shared/component-spinner/component-spinner.component';
+import { DialogModule } from 'primeng/dialog';
+import { PaginatorModule } from 'primeng/paginator';
+import { PrimeTemplate } from 'primeng/api';
+import { CardModule } from 'primeng/card';
+
+import { MatIcon } from '@angular/material/icon';
+import { TooltipModule } from 'primeng/tooltip';
+import { Button } from 'primeng/button';
 
 @Component({
-  selector: 'app-planet',
-  templateUrl: './planet.component.html',
-  styleUrls: ['./planet.component.scss'],
-  providers: [RemoveSecurityImgPipe]
+    selector: 'app-planet',
+    templateUrl: './planet.component.html',
+    styleUrls: ['./planet.component.scss'],
+    standalone: true,
+    imports: [FormsModule, ReactiveFormsModule, Button, TooltipModule, MatIcon, CardModule, PrimeTemplate, PaginatorModule, DialogModule, ComponentSpinnerComponent, RemoveSecurityImgPipe]
 })
-export class ImageComponent implements OnInit {
+export class PlanetComponent implements OnInit {
 
   planets: any;
   formPlanet!: FormGroup;
